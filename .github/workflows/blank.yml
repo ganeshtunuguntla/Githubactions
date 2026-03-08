@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hello step
-        #if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: echo "Hello world"
          # echo "${{inputs.Environment}}"
   outputs-job:
