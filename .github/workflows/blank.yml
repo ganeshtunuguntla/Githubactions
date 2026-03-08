@@ -27,7 +27,7 @@ jobs:
         run : echo "version = 1.0.0" >> $GITHUB_OUTPUT
       - name: output step
         id : s2
-        run : echo "${{ steps.s1.outputs.version}}$APP_ENV"  
+        run : echo "${{ steps.s1.outputs.version}}"  
 
   build:
     runs-on: ubuntu-latest
