@@ -3,4 +3,6 @@ on: push
 jobs:
   call-reusable-job:
     uses: ./.github/workflows/reusable.yml
+    with:
+      person: "Ooha"
   
