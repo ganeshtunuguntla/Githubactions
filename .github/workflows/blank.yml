@@ -1,24 +1,17 @@
 name: Hello world
 on: 
-  workflow_dispatch:
-    inputs:
-      Environment:
-        description: Choose environment to deploy
-        required: true
-        default: dev
-        type: choice
-        options:
-          - dev
-          - test
-          - prod
+  push:
+    branches:
+      - main
+      - feature
 jobs:
   Hello-job:  #name of job
     runs-on: ubuntu-latest
     steps:
       - name: hello step
-        run: |
-          echo "Hello world"
-          echo "${{inputs.Environment}}"
+        if: github.ref == 'refs/heads/main'
+        run: echo "Hello world"
+         # echo "${{inputs.Environment}}"
   outputs-job:
     runs-on: ubuntu-latest
     outputs:
