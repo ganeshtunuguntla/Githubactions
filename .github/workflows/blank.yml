@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: output step
         id : s1
-        run : echo "version = 1.0.0" >> $GITHUB_OUTPUT
+        run : echo "version=1.0.0" >> $GITHUB_OUTPUT
       - name: output step
         id : s2
         run : echo "${{ steps.s1.outputs.version}}"  
