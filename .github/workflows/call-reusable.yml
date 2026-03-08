@@ -2,8 +2,5 @@ name: call-reusable
 on: push
 jobs:
   call-reusable-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: step1
-        uses: ./.github/workflows/reusable.yml
+    uses: ./.github/workflows/reusable.yml
   
