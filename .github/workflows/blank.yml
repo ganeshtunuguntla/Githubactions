@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hello step
-        run: echo "Hello world"
+        run: |
+          echo "Hello world"
+          echo "$APP_ENV"
 
   build:
     runs-on: ubuntu-latest
