@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
-        uses: './.github/workflows/reusable.yml'
+        uses: ./.github/workflows/reusable.yml
   
