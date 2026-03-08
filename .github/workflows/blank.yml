@@ -1,5 +1,16 @@
 name: Hello world
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      Environment:
+        description: Choose environment to deploy
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
 jobs:
   Hello-job:  #name of job
     runs-on: ubuntu-latest
