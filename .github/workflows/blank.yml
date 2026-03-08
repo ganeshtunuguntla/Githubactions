@@ -19,6 +19,15 @@ jobs:
         run: |
           echo "Hello world"
           echo "${{inputs.Environment}}"
+  outputs-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output step
+        id : s1
+        run : echo "version = 1.0.0" >> $GITHUB_OUTPUT
+      - name: output step
+        id : s2
+        run : echo "${{ steps.s1.outputs.version}}$APP_ENV"  
 
   build:
     runs-on: ubuntu-latest
