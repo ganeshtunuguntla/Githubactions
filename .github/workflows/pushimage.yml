@@ -1,15 +1,32 @@
 name: Docker image CI for GHCR
 
-on: push
+on:
+  push:
+   # branches: [ main ]
+
+permissions:
+  contents: read
+  packages: write  # Required for GHCR push
 
 jobs:
-  build_and_pushjob:
+  build_and_push:
     runs-on: ubuntu:latest
     steps:
-      - uses: actions/checkout@v4
-      - name: build and push the image
-        run : |
-          docker login --username ganeshtunuguntla --password ${{secrets.GH_PAT}} ghcr.io
-          docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
-          docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
+      - uses: actions/checkout@v4  # Updated to latest
       
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_PAT }}
+      
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/ganeshtunuguntla/packagecheck:latest
