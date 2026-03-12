@@ -27,7 +27,6 @@ jobs:
         run : |
           echo "in steps"
           echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u ganeshtunuguntla --password-stdin
-          docker login --username ganeshtunuguntla --password-stdin
           docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
           echo "build is done"
           docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
