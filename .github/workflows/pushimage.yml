@@ -5,13 +5,29 @@ on: push
 jobs:
   build_and_pushjob:
     runs-on: ubuntu:latest
+
     steps:
-      - run : echo "in steps"
-      - uses: actions/checkout@v4
-      - name: build and push the image
-        run : |
-          docker login --username ganeshtunuguntla --password ${{secrets.GH_PAT}} ghcr.io
-          echo ${{secrets.GH_PAT}}
-          docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
-          echo "build is done"
+      steps:
+      - name: Print step
+        run: echo "in steps"
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u ganeshtunuguntla --password-stdin
+
+      - name: Build image
+        run: docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
+
+      - name: Push image
+        run: docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
+      # - run : echo "in steps"
+      # - uses: actions/checkout@v4
+      # - name: build and push the image
+      #   run : |
+      #     docker login --username ganeshtunuguntla --password ${{secrets.GH_PAT}} ghcr.io
+      #     echo ${{secrets.GH_PAT}}
+      #     docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
+      #     echo "build is done"
           docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
