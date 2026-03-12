@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu:latest
 
     steps:
-      steps:
       - name: Print step
         run: echo "in steps"
 
