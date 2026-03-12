@@ -10,5 +10,7 @@ jobs:
       - name: build and push the image
         run : |
           docker login --username ganeshtunuguntla --password ${{secrets.GH_PAT}} ghcr.io
+          echo ${{secrets.GH_PAT}}
           docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
+          echo "build is done"
           docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
