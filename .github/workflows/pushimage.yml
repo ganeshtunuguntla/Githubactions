@@ -29,4 +29,4 @@ jobs:
       #     echo ${{secrets.GH_PAT}}
       #     docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
       #     echo "build is done"
-          docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
+      #     docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
