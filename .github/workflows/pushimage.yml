@@ -25,8 +25,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: build and push the image
         run : |
+          echo "in steps"
           docker login --username ganeshtunuguntla --password-stdin
-          echo ${{secrets.GH_PAT}}
           docker build . -t ghcr.io/ganeshtunuguntla/packagecheck:latest
           echo "build is done"
           docker push ghcr.io/ganeshtunuguntla/packagecheck:latest
